@@ -1,4 +1,4 @@
-# Syncfusion&reg; ASP.NET Core DOCX Editor
+# Syncfusion&reg; ASP.NET Core DOCX Editor (Document Editor)
 
 The Syncfusion<sup style="font-size:70%">&reg;</sup> [ASP.NET Core DOCX Editor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=github&utm_campaign=github-asp-net-core-docx-editor-examples) (Document Editor) is a feature-rich, user-interactive component that enables creating, editing, viewing, and printing Word documents with advanced formatting, editing capabilities, and broad support for document import and export formats.
 
@@ -25,11 +25,11 @@ The Syncfusion<sup style="font-size:70%">&reg;</sup> [ASP.NET Core DOCX Editor](
 
 # Resources
 
-- **Product page:**   [Syncfusion® ASP.NET Core Word Processor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
+- **Product page:**   [Syncfusion® ASP.NET Core DOCX Editor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
 
-- **Documentation:**   [Syncfusion® ASP.NET Core Word Processor - Documentation](https://help.syncfusion.com/document-processing/word/word-processor/asp-net-core/overview?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
+- **Documentation:**   [Syncfusion® ASP.NET Core DOCX Editor - Documentation](https://help.syncfusion.com/document-processing/word/word-processor/asp-net-core/overview?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
 
-- **Online demo:**   [Syncfusion® ASP.NET Core Word Processor - Online demo](https://document.syncfusion.com/demos/docx-editor/asp-net-core/documenteditor/default?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples#/tailwind3)
+- **Online demo:**   [Syncfusion® ASP.NET Core DOCX Editor - Online demo](https://document.syncfusion.com/demos/docx-editor/asp-net-core/documenteditor/default?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples#/tailwind3)
 
 # Support and feedback
 
