@@ -44,3 +44,13 @@ publish/
 
 # Runtime data
 *.log
+
+# Client libraries (restored via libman / not needed in repo)
+Side-by-Side-Comparison/wwwroot/lib/
+**/wwwroot/lib/
+
+# Build artifacts
+bin/
+obj/
+node_modules/
+package-lock.json
