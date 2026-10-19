@@ -7,7 +7,7 @@
 
     function initializeEJButtons() {
         compareButtonEJ = new ej.buttons.Button({ isPrimary: true, disabled: true }, '#compareButton');
-        downloadButtonEJ = new ej.buttons.Button({ iconCss: 'e-icons e-download', cssClass: 'e-outline e-primary', disabled: true }, '#downloadButton');
+        downloadButtonEJ = new ej.buttons.Button({ cssClass: 'e-outline e-primary', disabled: true }, '#downloadButton');
         showRevisionsButtonEJ = new ej.buttons.Button({ iconCss: 'e-icons e-eye' }, '#showRevisionsButton');
     }
 
