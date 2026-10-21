@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Syncfusion.EJ2.DocumentEditor;
 using WDocument = Syncfusion.DocIO.DLS.WordDocument;
 using WFormatType = Syncfusion.DocIO.FormatType;
 
@@ -38,7 +39,7 @@ namespace DocumentEditor.Controllers
             stream.Position = 0;
 
             // Convert the DOCX stream to SFDT DOM.
-            Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.Load(stream, Syncfusion.EJ2.DocumentEditor.FormatType.Docx);
+            WordDocument document = WordDocument.Load(stream, FormatType.Docx);
             string json = JsonConvert.SerializeObject(document);
             document.Dispose();
             return json;
@@ -50,48 +51,49 @@ namespace DocumentEditor.Controllers
         [Route("CompareDocuments")]
         public string CompareDocuments(IFormCollection data)
         {
-            if (data.Files.Count < 2)
+            if (data.Files.Count < 2) return null;
+            IFormFile originalDoc = data.Files[0];
+            IFormFile revisedDoc = data.Files[1];
+
+            string type1 = Path.GetExtension(originalDoc.FileName)?.ToLower() ?? ".docx";
+
+            string type2 = Path.GetExtension(revisedDoc.FileName)?.ToLower() ?? ".docx";
+
+            Stream originalStream = GetDocumentStream(originalDoc, type1);
+
+            Stream revisedStream = GetDocumentStream(revisedDoc, type2);
+
+
+            using (originalStream)
+            using (WDocument originalDocument = new WDocument(originalStream, WFormatType.Docx))
+            using (revisedStream)
+            using (WDocument revisedDocument = new WDocument(revisedStream, WFormatType.Docx))
             {
-                return string.Empty;
+
+                originalDocument.Compare(revisedDocument);
+
+                var wordDoc = Syncfusion.EJ2.DocumentEditor.WordDocument.Load(originalDocument);
+
+                return Newtonsoft.Json.JsonConvert.SerializeObject(wordDoc);
+
+            }
+        }
+
+        private Stream GetDocumentStream(IFormFile file, string fileType)
+        {
+            if (fileType == ".docx")
+            {
+                return file.OpenReadStream();
             }
 
-            IFormFile? originalFile = data.Files.FirstOrDefault(f => f.Name == "originalFile");
-            IFormFile? revisedFile = data.Files.FirstOrDefault(f => f.Name == "revisedFile");
-            if (originalFile == null || revisedFile == null)
+            using (var reader = new StreamReader(file.OpenReadStream()))
             {
-                return string.Empty;
+                string sfdtContent = reader.ReadToEnd();
+                // Convert the SFDT content to a DOCX stream for comparison.
+                Stream stream = Syncfusion.EJ2.DocumentEditor.WordDocument.Save(sfdtContent, Syncfusion.EJ2.DocumentEditor.FormatType.Docx);
+                stream.Position = 0;
+                return stream;
             }
-
-            string author = data.TryGetValue("author", out var authorValue) ? authorValue.ToString() : "Author";
-            string dateTime = data.TryGetValue("dateTime", out var dateValue) ? dateValue.ToString() : DateTime.UtcNow.ToString("o");
-
-            var originalStream = new MemoryStream();
-            originalFile.CopyTo(originalStream);
-            originalStream.Position = 0;
-
-            var revisedStream = new MemoryStream();
-            revisedFile.CopyTo(revisedStream);
-            revisedStream.Position = 0;
-
-            // Load the original and revised documents using the Syncfusion .NET Word (DocIO) library.
-            WDocument originalDocument = new WDocument();
-            originalDocument.Settings.SkipIncrementalSaveValidation = true;
-            originalDocument.Open(originalStream, WFormatType.Automatic);
-
-            WDocument revisedDocument = new WDocument();
-            revisedDocument.Settings.SkipIncrementalSaveValidation = true;
-            revisedDocument.Open(revisedStream, WFormatType.Automatic);
-
-            // Compare the revised document against the original document.
-            originalDocument.Compare(revisedDocument, author, Convert.ToDateTime(dateTime));
-
-            // Convert the compared Word document to SFDT content.
-            Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.Load(originalDocument);
-            string json = JsonConvert.SerializeObject(document);
-            document.Dispose();
-            originalDocument.Dispose();
-            revisedDocument.Dispose();
-            return json;
         }
     }
 }
