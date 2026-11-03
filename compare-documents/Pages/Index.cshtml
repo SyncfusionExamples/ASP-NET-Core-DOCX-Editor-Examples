@@ -1,0 +1,21 @@
+@page
+@model IndexModel
+@Html.AntiForgeryToken()
+
+<button id="compare" class="e-btn e-primary" style="margin-bottom: 10px">Compare Documents</button>
+<ejs-documenteditorcontainer id="container" height="590px" enableToolbar="false" showPropertiesPane="false" enableTrackChanges="true"></ejs-documenteditorcontainer>
+
+<script>
+    document.getElementById('compare').addEventListener('click', async function () {
+        var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+        // Compares the documents on the server side and gets the resultant SFDT.
+        var response = await fetch('/?handler=Compare', {
+            method: 'POST',
+            headers: { 'RequestVerificationToken': token }
+        });
+        var sfdt = await response.text();
+        var editor = document.getElementById('container').ej2_instances[0].documentEditor;
+        editor.showRevisions = true;
+        editor.open(sfdt);
+    });
+</script>
