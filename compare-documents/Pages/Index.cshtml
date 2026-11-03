@@ -1,0 +1,25 @@
+@page
+@model IndexModel
+
+<button id="compare" class="e-btn e-primary" style="margin-bottom: 10px">Compare Documents</button>
+<ejs-documenteditorcontainer id="container" height="590px" enableToolbar="false" showPropertiesPane="false" enableTrackChanges="true"></ejs-documenteditorcontainer>
+
+<script>
+    // Loads the static SFDT contents as files, as the Web API accepts the original and revised files.
+    async function getSfdtFile(url, fileName) {
+        var response = await fetch(url);
+        return new File([await response.text()], fileName);
+    }
+
+    document.getElementById('compare').addEventListener('click', async function () {
+        var formData = new FormData();
+        formData.append('OriginalFile', await getSfdtFile('/data/original.json', 'original.sfdt'));
+        formData.append('RevisedFile', await getSfdtFile('/data/revised.json', 'revised.sfdt'));
+        // Compares the documents using the Web API and gets the resultant SFDT.
+        var response = await fetch('/api/DocumentEditor/CompareDocuments', { method: 'POST', body: formData });
+        var sfdt = await response.text();
+        var editor = document.getElementById('container').ej2_instances[0].documentEditor;
+        editor.showRevisions = true;
+        editor.open(sfdt);
+    });
+</script>
