@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository contains an ASP.NET Core application that demonstrates how to compare two Word documents using the Syncfusion<sup style="font-size:70%">&reg;</sup> [ASP.NET Core DOCX Editor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) (Document Editor). The sample allows users to upload an original and a revised document, compare them using the Syncfusion .NET Word Library (DocIO), and view the comparison results with revision tracking side by side.
+This sample contains an ASP.NET Core application that demonstrates how to compare two Word documents using the Syncfusion<sup style="font-size:70%">&reg;</sup> [ASP.NET Core DOCX Editor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) (Document Editor). The sample allows users to upload an original and a revised document, compare them using the Syncfusion .NET Word Library (DocIO), and view the comparison results with revision tracking side by side.
 
 ### Features
 
@@ -109,23 +109,3 @@ ASP.NET Core DOCX Editor
         ├── Left Editor  → Original
         └── Right Editor → Compared / Revised
 ```
-
----
-
-# Resources
-
-- **Product page:**   [Syncfusion® ASP.NET Core DOCX Editor](https://www.syncfusion.com/docx-editor-sdk/asp-net-core-docx-editor?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
-
-- **Documentation:**   [Syncfusion® ASP.NET Core DOCX Editor - Documentation](https://help.syncfusion.com/document-processing/word/word-processor/asp-net-core/overview?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) 
-
-- **Online demo:**   [Syncfusion® ASP.NET Core DOCX Editor - Online demo](https://document.syncfusion.com/demos/docx-editor/asp-net-core/documenteditor/default?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples#/tailwind3)
-
-# Support and feedback 
-
-For any other queries, reach our [Syncfusion® support team](https://support.syncfusion.com/?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) or post the queries through the [community forums](https://www.syncfusion.com/forums?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples). 
-
-Request new feature through [Syncfusion® feedback portal](https://www.syncfusion.com/feedback?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples). 
-
-# License
-
-This is a commercial product and requires a paid license for possession or use Syncfusion's licensed software, including this component, is subject to the terms and conditions of [Syncfusion's EULA](https://www.syncfusion.com/license/studio/syncfusion_essential_studio_eula.pdf?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples). You can purchase a licnense [here](https://www.syncfusion.com/sales/products?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples) or start a free 30-day trial [here](https://www.syncfusion.com/account/manage-trials/start-trials?utm_source=github&utm_medium=listing&utm_campaign=github-asp-net-core-docx-editor-examples).
