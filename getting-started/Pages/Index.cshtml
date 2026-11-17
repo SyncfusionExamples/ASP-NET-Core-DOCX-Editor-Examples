@@ -1,4 +1,8 @@
-﻿@page
+@page
 @model IndexModel
 
-<ejs-documenteditorcontainer id="container" height="620px"></ejs-documenteditorcontainer>
+<ejs-documenteditorcontainer id="container" height="620px" toolbarMode="Ribbon"></ejs-documenteditorcontainer>
+
+<script>
+    ej.documenteditor.DocumentEditorContainer.Inject(ej.documenteditor.Toolbar, ej.documenteditor.Ribbon);
+</script>
